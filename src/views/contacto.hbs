@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peliculas - Contacto</title>
+  <link rel="stylesheet" href="/css/contacts.css">  
+</head>
+
+<body>
+  <header class="header">
+    <div class="menu container">
+      <a href="/" class="logo">locopelis</a>
+      <input type="checkbox" id="menu" />
+      <label for="menu">
+        <img src="/img/menu.png" class="menu-icono" alt="menu">
+      </label>
+      <nav class="navbar">
+          <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="nosotros">Nosotros</a></li>
+            <li><a href="/">Peliculas</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+          </ul>
+        </nav>
+        {{#if usuario}}
+            <h2>{{usuario}}</h2>
+            <a href="logout" class="btn-1">Salir</a>
+        {{else}}
+            <a href="login" class="btn-1">Login</a>
+        {{/if}}
+    </div>
+  </header>
+
+  <main>
+    <div class="container form-container">
+      <h3 class="form-title">Contáctanos</h3>
+      <form name="contacts" class="form" onsubmit="return submitForm()">
+        <div>
+          <label for="text">Nombre:</label>
+          <input type="text" id="name">
+          <div class="validate" id="validate_name"> &nbsp; </div>
+        </div>
+        <div>
+          <label for="country">País:</label>
+          <select name="country" id="country">
+            <option value=""></option>
+            <option value="Argentina">Argentina</option>
+            <option value="Argentina">Chile</option>
+            <option value="Argentina">Paraguay</option>
+            <option value="Argentina">Uruguay</option>
+            <option value="Argentina">España</option>
+          </select>
+          <div class="validate" id="validate_country"> &nbsp; </div>
+        </div>
+        <div>
+          <label for="issue">Motivo: </label>
+          <input type="text" name="issue" id="issue">
+          <div class="validate" id="validate_issue"> &nbsp; </div>
+        </div>
+        <div>
+          <label for="description">Descripción: </label>
+          <input type="text" name="description" id="description">
+          <div class="validate" id="validate_description"> &nbsp; </div>
+        </div>
+        <div>
+          <label for="notify">Desea recibir notificaciones de Locopelis?</label>
+          <input type="checkbox" name="notify" id="notify">
+          <div class="validate" id="validate_notify"> &nbsp; </div>
+        </div>
+        <input type="submit" value="Enviar">
+      </form>
+    </div>
+  </main>
+
+    <footer class="footer container">
+      <h3>Locopelis</h3>
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/nosotros">Nosotros</a></li>
+        <li><a href="#">Peliculas</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+            {{#if usuario}}
+                <li><a href="/logout" class="btn-1">Cerrar sesión</a></li>
+            {{else}}
+                <li><a href="/login" class="btn-1">Login</a></li>
+            {{/if }}
+      </ul>
+
+    </footer>
+
+  <script src="/js/contacts.js"></script>
+</body>
+
+</html>

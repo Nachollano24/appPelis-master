@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peliculas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header class="account-header">
+        <div class="menu container">
+            <a href="/" class="logo">locopelis</a>
+            <input type="checkbox" id="menu" />
+            <label for="menu">
+                <img src="/img/menu.png" class="menu-icono" alt="menu">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/nosotros">Nosotros</a></li>
+                    <li><a href="/">Peliculas</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
+                    <li><a href="/login" class="login">Login</a></li>
+                </ul>
+            </nav>
+            <a href="/login" class="btn-1">Login</a>
+        </div>
+    </header>
+    
+    <main class="account-main">
+        <form id="signup" class="account-content" action="/usuario/add" method="post">
+            <h2>Crear cuenta</h2>
+            <div>
+                <label for="signup-name">Nombre</label>
+                <input id="signup-name" class="input" type="text" name="nombre" />
+                <div id="signup-name-error" class="error">Por favor ingresa tu nombre</div>
+            </div>
+            <div>
+                <label for="signup-name">Apellido</label>
+                <input id="signup-name" class="input" type="text" name="apellido" />
+                <div id="signup-name-error" class="error">Por favor ingresa tu apellido</div>
+            </div>
+            <div>
+                <label for="signup-email">Email</label>
+                <input id="signup-email" class="input" type="text" name="email" />
+                <div id="signup-email-error" class="error">Por favor ingresa tu email</div>
+            </div>
+            <div>
+                <label for="signup-pass">Contraseña</label>
+                <input id="signup-pass" class="input" type="password" name="contraseña" />
+                <div id="signup-pass-error" class="error">Por favor ingresa tu contraseña</div>
+                <div id="signup-error" class="error">El email o la contrasña es incorrecta</div>
+            </div>
+            <button id="signup-btn" class="btn-1">Crear cuenta</button>
+            
+            <div class="account-other">
+                <p>Tenes una cuenta?</p>
+                <a href="/login">Ingresar</a>
+            </div>
+        </form>
+    </main>
+    
+    <footer class="footer container">
+        <h3>Locopelis</h3>
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/nosotros">Nosotros</a></li>
+            <li><a href="/">Peliculas</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+            <li><a href="/login" class="login">Login</a></li>
+        </ul>
+    </footer>
+    
+    <script src="/js/account.js"></script>
+</body>

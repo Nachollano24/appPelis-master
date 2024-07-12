@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peliculas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header class="account-header">
+        <div class="menu container">
+            <a href="/" class="logo">locopelis</a>
+            <input type="checkbox" id="menu" />
+            <label for="menu">
+                <img src="/img/menu.png" class="menu-icono" alt="menu">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/nosotros">Nosotros</a></li>
+                    <li><a href="/">Peliculas</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            {{#if usuario}}
+                <h2>{{usuario}}</h2>
+                <a href="/logout" class="btn-1">Salir</a>
+            {{else}}
+                <a href="login" class="btn-1">Login</a>
+            {{/if}}
+        </div>
+    </header>
+    
+    <main class="account-main">
+        <form id="createPelicula" class="account-content" action="/pelicula/add" method="post" enctype="multipart/form-data">
+            <h2>Crear Pelicula</h2>
+            <div>
+                <label for="titulo">Titulo</label>
+                <input id="titulo" class="input" type="text" name="titulo" />
+                <div id="titulo-error" class="error">Por favor ingrese un titulo</div>
+            </div>
+            <div>
+                <label for="descripcion">Descripción</label>
+                <input class="input" id="descripcion" type="text" name="descripcion" />
+                <div id="descripcion-error" class="error">Ingrese una descripcion</div>
+            </div>
+            <input value="0" type="text" name="puntaje" hidden>
+            <div>
+                <label for="imagen">Imagen</label>
+                <input type="file" id="imagen" name="imagen" />
+                <div id="imagen-error" class="error">Ingrese una imagen</div>
+            </div>
+            <div>
+                <label for="id_categoria">Categoria</label>
+                <select name="id_categoria">
+                    {{#each categorias}}
+                    <option value="{{id}}">{{nombre}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <button id="create-pelicula" class="btn-1">Crear pelicula</button>
+            
+            <div class="account-other">
+                <a href="/">Volver</a>
+            </div>
+        </form>
+    </main>
+    
+    <footer class="footer container">
+      <h3>Locopelis</h3>
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/nosotros">Nosotros</a></li>
+        <li><a href="#">Peliculas</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+            {{#if usuario}}
+                <li><a href="/logout" class="btn-1">Cerrar sesión</a></li>
+            {{else}}
+                <li><a href="/login" class="btn-1">Login</a></li>
+            {{/if }}
+      </ul>
+
+    </footer>
+    
+    <script src="/js/peliculas.js"></script>
+</body>

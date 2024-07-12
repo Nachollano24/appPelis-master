@@ -1,0 +1,123 @@
+<html lang="es">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peliculas</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="menu container">
+        <a href="#" class="logo">locopelis</a>
+        <input type="checkbox" id="menu" />
+        <label for="menu">
+          <img src="/img/menu.png" class="menu-icono" alt="menu" />
+        </label>
+        <nav class="navbar">
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="nosotros">Nosotros</a></li>
+            <li><a href="#">Peliculas</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+          </ul>
+        </nav>
+        {{#if usuario}}
+          <h2>{{usuario}}</h2>
+          <a href="logout" class="btn-1">Salir</a>
+        {{else}}
+          <a href="login" class="btn-1">Login</a>
+        {{/if}}
+      </div>
+      <div class="header-content container">
+
+        <div class="header-1">
+          <img src="imagenes/IT-LOGO-COLOR.png" alt="" />
+          <a href="#" class="btn-2">Ver ahora</a>
+
+        </div>
+        <div class="header-2">
+          <h1>Las mejores <br /> peliculas</h1>
+          <img src="/img/play.png" alt="" />
+        </div>
+      </div>
+
+    </header>
+
+    <main>
+      {{#if peliculas}}
+        <section class="movies container">
+          <h2>Peliculas mas vistas</h2>
+          <hr />
+          <div class="box-container-1">
+            {{#each peliculas}}
+              <div class="box-{{id}}">
+                <div class="content">
+                  <img
+                    src="data:image/jpeg;base64,{{imagen}}"
+                    alt="{{titulo}}"
+                  />
+                  <h3>{{titulo}}</h3>
+                  <p>{{descripcion}}</p>
+                  <p>{{nombre}}</p>
+                  <p>{{puntaje}}</p>
+                  {{#ifAdmin ../usuario ../es_admin}}
+                    <div>
+                      <a href="/pelicula/edit/{{id}}" class="btn-1">EDITAR</a>
+                    </div>
+                    <br>
+                    <div>
+                      <a href="/pelicula/delete/{{id}}" class="btn-1">BORRAR</a>
+                    </div>
+                  {{/ifAdmin}}
+                </div>
+              </div>
+            {{/each}}
+          </div>
+            {{#ifAdmin usuario es_admin}}
+                <div>
+                <a href="/pelicula/create" class="btn-1">Nueva Pelicula</a>
+                </div>
+          {{/ifAdmin}}
+        </section>
+      {{else}}
+        <section class="movies container">
+          <hr />
+          <div class="box-container-1">
+            <div class="box-1">
+              <div class="content">
+                <h3>No hay peliculas añadidas.</h3>
+                {{#if usuario}}
+                  <div>
+                    <a href="/pelicula/create" class="btn-1">Nueva Pelicula</a>
+                  </div>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </section>
+      {{/if}}
+
+    </main>
+
+    <footer class="footer container">
+      <h3>Locopelis</h3>
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/nosotros">Nosotros</a></li>
+        <li><a href="#">Peliculas</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+        {{#if usuario}}
+          <li><a href="/logout" class="btn-1">Cerrar sesión</a></li>
+        {{else}}
+          <li><a href="/login" class="btn-1">Login</a></li>
+        {{/if}}
+      </ul>
+
+    </footer>
+
+    <script src="j/s/script.js"></script>
+  </body>
+
+</html>
